@@ -1,3 +1,58 @@
 <form name="nameValForm">
   <input name="custName" type="text" id="customerName">
 </form>
+<script>
+   function validateFName(){
+    var customerName = [],
+    fname = [],
+    lname = [],
+    validateLetters = /^[A-Za-z]+$/;
+
+    customerName = document.getElementById('customerName').value;
+
+    fname = customerName.substring(0, customerName.indexOf(' '));
+
+    for(var i = 0; i < customerName.length; i++){
+        lname = customerName.substring(customerName.lastIndexOf(' ')+1);
+    }
+
+    if(fname[0] == fname[0].toUpperCase() && fname[0] == fname[0].match(validateLetters) && fname[1] == fname[1].toLowerCase()){
+        alert('goo');
+    }
+    if(fname[0] == fname[0].toLowerCase() && fname[0] == fname[0].match(validateLetters)){
+        alert('Initialize you first name');
+        document.getElementById('customerName').focus();
+		break;
+    }
+    if(fname[1] == fname[1].toUpperCase()){
+        alert('Lower the second letter of your first name.');
+        document.getElementById('customerName').focus();
+		break;
+    }
+    for( var i = 1; i < fname.length; ++i){
+        if(fname[i] == fname[i].match(validateLetters))
+        {
+             alert('goo');
+        }
+    }
+
+    if(lname[0] == lname[0].toUpperCase() && lname[0] == lname[0].match(validateLetters) && lname[1] == lname[1].toLowerCase()){
+         alert('goo');
+    }
+    if(lname[0] == lname[0].toLowerCase() && lname[0] == lname[0].match(validateLetters)){
+        alert('Initialize your last name');
+        document.getElementById('customerName').focus();
+		break;
+    }
+    if(lname[1] == lname[1].toUpperCase()){
+        alert('Lower the second letter of your last name.');
+        document.getElementById('customerName').focus();
+		break;
+    }
+    for( var i = 1; i < fname.length; ++i){
+        if(lname[i] == lname[i].match(validateLetters))
+        {
+            alert('goo');
+        }
+    }
+</script>

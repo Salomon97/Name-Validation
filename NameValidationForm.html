@@ -1,8 +1,9 @@
 <form name="nameValForm">
-  <input name="custName" type="text" id="customerName">
+  <input name="customerName" type="text" id="customerName">
+  <button id="sbmtBtn">Submit Booking</button>
 </form>
 <script>
-   function validateFName(){
+   /*function validateFName(){
     var customerName = [],
     fname = [],
     lname = [],
@@ -54,5 +55,34 @@
         {
             alert('goo');
         }
+    }*/
+	   
+	   
+var button = document.getElementById('sbmtBtn');
+
+button.onclick = function(e){
+    e.preventDefault();
+    processForm();
+    
+}   
+function submitForm(){
+    var name = document.getElementById('customerName').value,
+    //errorMessageSpan = document.getElementById('custNameMessage'),
+    message = "",
+    name_validator = new nameValidator(name);
+    
+    if(!name_validator.isNameValid()){
+        //errorMessageSpan.style.display = "inline-block";
+        alert(name_validator.errorMessage);
+        document.getElementById('customerName').focus();          
     }
+    else{
+        //errorMessageSpan.innerText = '';
+        //errorMessageSpan.style.display="none";
+        var fname = name_validator.getFirstName();
+        var lName = name_validator.getLastName();
+        console.log("valid name!! your name is: "+fname+" "+lName);
+    }
+}
+
 </script>
